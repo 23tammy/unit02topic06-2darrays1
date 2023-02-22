@@ -36,8 +36,46 @@ public class Main {
       for (int x = 0; x < arr.length; x++){
         System.out.print(arr[x][c] + " ");
       }
+      System.out.println();
     }
     
+  }
+
+  public static double[][] withWeightedAverage(double[][] spread, double[] weights) {
+    int rows = spread.length;
+    int col = spread[0].length;
+    double[][] newSpread = new double[rows + 1][col + 1];
+
+    for (int r = 0; r < rows; r++) {
+        for (int c = 0; c < col; c++) {
+            newSpread[r][c] = spread[r][c];
+        }
+    }
+
+    //  row avg
+    for (int r = 0; r < rows; r++) {
+        double total = 0;
+        for (int i = 0; i < col; i++) {
+            double value = spread[r][i] * weights[i];
+            total += value;
+        }
+       newSpread[r][col] = total;
+    }
+
+    //  column avg
+    for (int c = 0; c < col+1; c++) {
+        double total = 0;
+        for (int r = 0; r <rows; r++) {
+            total += newSpread[r][c];
+        }
+        newSpread[rows][c] = total / rows;
+    }
+
+    for (int i = 0; i < newSpread.length; i++){
+      System.out.println(Arrays.toString(newSpread[i]));
+    }
+
+    return newSpread;
   }
   public static void main(String[] args) {
     int[][] arr1 = new int[][]{
@@ -66,9 +104,12 @@ public class Main {
       {77, 70.5, 66.5},
       {89, 89.5, 81}};
 
+      double[] weights = { 0.25, 0.25, 0.50 };
+
       //System.out.println(Arrays.deepToString(copySquare(arr1)));
       //System.out.println(Arrays.deepToString(copyRectangle(arr2)));
       //System.out.println(Arrays.deepToString(copyRagged(arr3)));
-      printTranspose(arr4);
+      //printTranspose(arr4);
+      //withWeightedAverage(arr4, weights);
   }
 }
