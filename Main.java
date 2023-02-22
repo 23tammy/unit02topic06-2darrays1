@@ -22,28 +22,53 @@ public class Main {
     return copyOfRec;
   }
 
-  public static void copyRagged(int[][] arr) {
-    for(int r = 0; r < arr.length; r++){
-      System.out.println(Arrays.toString(arr[r]));
-      for(int c = 0; c < arr[r].length; c++){ //notice r :copy individual rows, add to 2d array?
-        
-        
-      System.out.println((arr[r][c]));
+  public static int[][] copyRagged(int[][] arr) {
+    int[][] copyOfRag = new int [arr.length][];
+    for(int r = 0; r < arr.length; r++){{ // copy row; add to array
+      copyOfRag[r] = arr[r];
+        }
+      }
+    return copyOfRag;
+  }
+
+  public static void printTranspose(double[][] arr) {   //column = rows; rows = columns
+    for (int c = 0; c < arr[0].length; c++){
+      for (int x = 0; x < arr.length; x++){
+        System.out.print(arr[x][c] + " ");
       }
     }
-    //return copyOfRag;
+    
   }
   public static void main(String[] args) {
-    int[][] arr = new int[][]{
+    int[][] arr1 = new int[][]{
+      {1, 0, 8},
+      {4, 5, 5},
+      {10, 11, 12}};
+    int[][] arr2 = new int[][]{
+      {1, 0, 6},
+      {4, 5, 5},
+      {7, 4, 5},
+      {10, 11, 12}};
+    int[][] arr3 = new int[][]{
       {1, 0},
       {4, 5, 5},
-      {7, 8, 9},
+      {7,},
       {10, 11, 12}};
+    double[][] arr4 = new double[][] {
+      {99, 85, 98},
+      {98, 57, 79},
+      {92, 77, 74},
+      {94, 62, 81},
+      {99, 94, 92},
+      {80, 76.5, 67},
+      {76, 58.5, 90.5},
+      {92, 66, 91},
+      {77, 70.5, 66.5},
+      {89, 89.5, 81}};
 
-      copyRagged(arr);
-
-      //System.out.println(Arrays.deepToString(copySquare(arr)));
-      //System.out.println(Arrays.deepToString(copyRectangle(arr)));
-      //System.out.println(Arrays.deepToString(copyRagged(arr)));
+      //System.out.println(Arrays.deepToString(copySquare(arr1)));
+      //System.out.println(Arrays.deepToString(copyRectangle(arr2)));
+      //System.out.println(Arrays.deepToString(copyRagged(arr3)));
+      printTranspose(arr4);
   }
 }
