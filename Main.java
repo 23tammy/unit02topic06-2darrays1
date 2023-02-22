@@ -71,7 +71,7 @@ public class Main {
         newSpread[rows][c] = total / rows;
     }
 
-    for (int i = 0; i < newSpread.length; i++){
+    for (int i = 0; i < newSpread.length; i++){ //pretty rows
       System.out.println(Arrays.toString(newSpread[i]));
     }
 
