@@ -27,8 +27,7 @@ public class Main {
   public static int[][] copyRagged(int[][] arr) {
     int[][] copyOfRag = new int [arr.length][];
     for(int r = 0; r < arr.length; r++){{ // copy row; add to array
-      // FIXME: this doesn't actually create a copy. See my demo in main.
-      copyOfRag[r] = arr[r];
+      copyOfRag[r] = new int[arr[r].length];
         }
       }
     return copyOfRag;
@@ -100,7 +99,8 @@ public class Main {
     // changing values in the copy shouldn't affect the original array
     copyOfarr3[0][0] = 9999;
     // but it does. Because it's not technically a true copy
-    System.out.println(Arrays.deepToString(arr3));
+    //System.out.println(Arrays.deepToString(arr3));
+    copyRagged(arr3);
 
     // double[][] arr4 = new double[][] {
     //   {99, 85, 98},
